@@ -1,0 +1,101 @@
+.incident-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid #ddd;
+  }
+  
+  .incident-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  
+  .incident-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .incident-header h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .incident-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .severity {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  
+  .severity.low {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .severity.medium {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .severity.high {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .date {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .view-details {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.9em;
+  }
+  
+  .view-details:hover {
+    text-decoration: underline;
+  }
+  
+  .incident-description {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+  }
+  
+  .incident-card.low {
+    border-left-color: #28a745;
+  }
+  
+  .incident-card.medium {
+    border-left-color: #ffc107;
+  }
+  
+  .incident-card.high {
+    border-left-color: #dc3545;
+  }
+  
+  @media (max-width: 768px) {
+    .incident-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .incident-meta {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }

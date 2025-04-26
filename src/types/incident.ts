@@ -1,3 +1,4 @@
+// src/types/incident.ts
 export type Severity = 'Low' | 'Medium' | 'High';
 export type SortOrder = 'newest' | 'oldest';
 

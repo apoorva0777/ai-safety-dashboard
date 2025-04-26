@@ -1,44 +1,21 @@
+// src/App.tsx
 import React, { useState } from 'react';
+import { Incident, Severity, SortOrder } from './types/incident';
+import { initialIncidents } from './utils/constants';
+import Sidebar from './components/Sidebar/Sidebar';
+import MainContent from './components/MainContent/MainContent';
 import './App.css';
-import IncidentCard from './components/IncidentCard/IncidentCard';
-import IncidentForm from './components/IncidentForm/IncidentForm';
-import Controls from './components/Controls/Controls';
-import { Incident, Severity, SortOrder } from './types';
-
-const initialIncidents: Incident[] = [
-  { 
-    id: 1, 
-    title: "Biased Recommendation Algorithm", 
-    description: "Algorithm consistently favored certain demographics...", 
-    severity: "Medium", 
-    reported_at: "2025-03-15T10:00:00Z" 
-  },
-  { 
-    id: 2, 
-    title: "LLM Hallucination in Critical Info", 
-    description: "LLM provided incorrect safety procedure information...", 
-    severity: "High", 
-    reported_at: "2025-04-01T14:30:00Z" 
-  },
-  { 
-    id: 3, 
-    title: "Minor Data Leak via Chatbot", 
-    description: "Chatbot inadvertently exposed non-sensitive user metadata...", 
-    severity: "Low", 
-    reported_at: "2025-03-20T09:15:00Z" 
-  }
-];
 
 const App: React.FC = () => {
   const [incidents, setIncidents] = useState<Incident[]>(initialIncidents);
   const [filter, setFilter] = useState<Severity | 'All'>('All');
   const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
   const [expandedIncident, setExpandedIncident] = useState<number | null>(null);
-  const [showForm, setShowForm] = useState(false);
+  const [isReporting, setIsReporting] = useState(false);
   const [newIncident, setNewIncident] = useState<Omit<Incident, 'id' | 'reported_at'>>({ 
     title: '', 
     description: '', 
-    severity: 'Low' 
+    severity: 'Medium' 
   });
 
   const filteredIncidents = incidents.filter(incident => 
@@ -51,9 +28,9 @@ const App: React.FC = () => {
     return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleReportSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newIncident.title || !newIncident.description) return;
+    if (!newIncident.title.trim() || !newIncident.description.trim()) return;
     
     const incident: Incident = {
       id: incidents.length + 1,
@@ -63,17 +40,14 @@ const App: React.FC = () => {
       reported_at: new Date().toISOString()
     };
     
-    setIncidents([...incidents, incident]);
-    setNewIncident({ title: '', description: '', severity: 'Low' });
-    setShowForm(false);
+    setIncidents([incident, ...incidents]);
+    setNewIncident({ title: '', description: '', severity: 'Medium' });
+    setIsReporting(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setNewIncident({
-      ...newIncident,
-      [name]: value
-    });
+    setNewIncident(prev => ({ ...prev, [name]: value }));
   };
 
   const toggleExpand = (id: number) => {
@@ -82,40 +56,26 @@ const App: React.FC = () => {
 
   return (
     <div className="dashboard">
-      <h1>AI Safety Incident Dashboard</h1>
-      
-      <Controls
+      <Sidebar 
         filter={filter}
-        onFilterChange={setFilter}
         sortOrder={sortOrder}
+        onFilterChange={setFilter}
         onSortChange={setSortOrder}
-        onToggleForm={() => setShowForm(!showForm)}
-        showForm={showForm}
       />
       
-      {showForm && (
-        <IncidentForm
-          onSubmit={handleSubmit}
-          incident={newIncident}
-          onInputChange={handleInputChange}
-          onCancel={() => setShowForm(false)}
-        />
-      )}
-      
-      <div className="incidents-list">
-        {sortedIncidents.length === 0 ? (
-          <p>No incidents found matching the current filter.</p>
-        ) : (
-          sortedIncidents.map(incident => (
-            <IncidentCard
-              key={incident.id}
-              incident={incident}
-              isExpanded={expandedIncident === incident.id}
-              onToggleExpand={toggleExpand}
-            />
-          ))
-        )}
-      </div>
+      <MainContent
+        incidents={sortedIncidents}
+        expandedIncident={expandedIncident}
+        isReporting={isReporting}
+        newIncident={newIncident}
+        filteredCount={filteredIncidents.length}
+        totalCount={incidents.length}
+        onToggleExpand={toggleExpand}
+        onInputChange={handleInputChange}
+        onSubmit={handleReportSubmit}
+        onCancel={() => setIsReporting(false)}
+        onStartReporting={() => setIsReporting(true)}
+      />
     </div>
   );
 };

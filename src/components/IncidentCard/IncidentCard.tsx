@@ -1,5 +1,6 @@
+// src/components/IncidentCard/IncidentCard.tsx
 import React from 'react';
-import { Incident } from '../../types';
+import { Incident } from '../../types/incident';
 import './IncidentCard.css';
 
 interface IncidentCardProps {
@@ -14,19 +15,25 @@ const IncidentCard: React.FC<IncidentCardProps> = ({
   onToggleExpand 
 }) => {
   return (
-    <div className={`incident-card ${incident.severity.toLowerCase()}`}>
+    <div className={`incident-card severity-${incident.severity.toLowerCase()}`}>
       <div className="incident-header">
-        <h3>{incident.title}</h3>
-        <div className="incident-meta">
-          <span className={`severity ${incident.severity.toLowerCase()}`}>
+        <div className="incident-title">
+          <h3>{incident.title}</h3>
+          <span className={`severity-badge ${incident.severity.toLowerCase()}`}>
             {incident.severity}
           </span>
+        </div>
+        <div className="incident-meta">
           <span className="date">
-            {new Date(incident.reported_at).toLocaleDateString()}
+            {new Date(incident.reported_at).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            })}
           </span>
           <button 
-            className="view-details"
             onClick={() => onToggleExpand(incident.id)}
+            className="view-details"
           >
             {isExpanded ? 'Hide Details' : 'View Details'}
           </button>

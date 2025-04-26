@@ -1,28 +1,26 @@
+// src/components/IncidentFilters/IncidentFilters.tsx
 import React from 'react';
-import { Severity, SortOrder } from '../../types';
-import './Controls.css';
+import { Severity, SortOrder } from '../../types/incident';
+import './IncidentFilters.css';
 
-interface ControlsProps {
+interface IncidentFiltersProps {
   filter: Severity | 'All';
-  onFilterChange: (filter: Severity | 'All') => void;
   sortOrder: SortOrder;
-  onSortChange: (order: SortOrder) => void;
-  onToggleForm: () => void;
-  showForm: boolean;
+  onFilterChange: (filter: Severity | 'All') => void;
+  onSortChange: (sortOrder: SortOrder) => void;
 }
 
-const Controls: React.FC<ControlsProps> = ({ 
+const IncidentFilters: React.FC<IncidentFiltersProps> = ({ 
   filter, 
-  onFilterChange, 
   sortOrder, 
-  onSortChange,
-  onToggleForm,
-  showForm
+  onFilterChange, 
+  onSortChange 
 }) => {
   return (
-    <div className="controls">
-      <div className="filter-control">
-        <label>Filter by Severity:</label>
+    <div className="filters">
+      <h3>Filters</h3>
+      <div className="filter-group">
+        <label>Severity:</label>
         <select 
           value={filter} 
           onChange={(e) => onFilterChange(e.target.value as Severity | 'All')}
@@ -34,8 +32,8 @@ const Controls: React.FC<ControlsProps> = ({
         </select>
       </div>
       
-      <div className="sort-control">
-        <label>Sort by Date:</label>
+      <div className="filter-group">
+        <label>Sort by:</label>
         <select 
           value={sortOrder} 
           onChange={(e) => onSortChange(e.target.value as SortOrder)}
@@ -44,16 +42,8 @@ const Controls: React.FC<ControlsProps> = ({
           <option value="oldest">Oldest First</option>
         </select>
       </div>
-      
-      <button 
-        className="add-incident" 
-        onClick={onToggleForm}
-        type="button"
-      >
-        {showForm ? 'Cancel' : 'Report New Incident'}
-      </button>
     </div>
   );
 };
 
-export default Controls;
+export default IncidentFilters;

@@ -1,101 +1,112 @@
+/* src/components/IncidentCard/IncidentCard.css */
 .incident-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-left: 4px solid #ddd;
-  }
-  
-  .incident-card:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
-  
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.25rem;
+  transition: var(--transition);
+}
+
+.incident-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.incident-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.incident-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.incident-title h3 {
+  font-size: 1.1rem;
+  color: var(--dark);
+}
+
+.severity-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.severity-badge.low {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: var(--success);
+}
+
+.severity-badge.medium {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #d39e00;
+}
+
+.severity-badge.high {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: var(--danger);
+}
+
+.incident-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.date {
+  white-space: nowrap;
+}
+
+.view-details {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 0.25rem;
+}
+
+.view-details:hover {
+  text-decoration: underline;
+}
+
+.incident-description {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-light);
+  color: var(--secondary);
+}
+
+/* Severity border indicators */
+.incident-card.severity-low {
+  border-left: 4px solid var(--success);
+}
+
+.incident-card.severity-medium {
+  border-left: 4px solid var(--warning);
+}
+
+.incident-card.severity-high {
+  border-left: 4px solid var(--danger);
+}
+
+@media (max-width: 768px) {
   .incident-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .incident-header h3 {
-    margin: 0;
-    color: #333;
+    flex-direction: column;
+    gap: 0.5rem;
   }
   
   .incident-meta {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    width: 100%;
+    justify-content: space-between;
   }
-  
-  .severity {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.9em;
-  }
-  
-  .severity.low {
-    background-color: #d4edda;
-    color: #155724;
-  }
-  
-  .severity.medium {
-    background-color: #fff3cd;
-    color: #856404;
-  }
-  
-  .severity.high {
-    background-color: #f8d7da;
-    color: #721c24;
-  }
-  
-  .date {
-    color: #666;
-    font-size: 0.9em;
-  }
-  
-  .view-details {
-    background: none;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-    padding: 0;
-    font-size: 0.9em;
-  }
-  
-  .view-details:hover {
-    text-decoration: underline;
-  }
-  
-  .incident-description {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-  }
-  
-  .incident-card.low {
-    border-left-color: #28a745;
-  }
-  
-  .incident-card.medium {
-    border-left-color: #ffc107;
-  }
-  
-  .incident-card.high {
-    border-left-color: #dc3545;
-  }
-  
-  @media (max-width: 768px) {
-    .incident-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    
-    .incident-meta {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }
+}

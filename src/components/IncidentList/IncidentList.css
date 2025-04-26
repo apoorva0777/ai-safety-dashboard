@@ -1,0 +1,15 @@
+/* src/components/IncidentList/IncidentList.css */
+.incidents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .no-incidents {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gray);
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }

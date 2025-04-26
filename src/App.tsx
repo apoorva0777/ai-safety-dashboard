@@ -1,5 +1,5 @@
-// src/App.tsx
 import React, { useState } from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { Incident, Severity, SortOrder } from './types/incident';
 import { initialIncidents } from './utils/constants';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -55,28 +55,30 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="dashboard">
-      <Sidebar 
-        filter={filter}
-        sortOrder={sortOrder}
-        onFilterChange={setFilter}
-        onSortChange={setSortOrder}
-      />
-      
-      <MainContent
-        incidents={sortedIncidents}
-        expandedIncident={expandedIncident}
-        isReporting={isReporting}
-        newIncident={newIncident}
-        filteredCount={filteredIncidents.length}
-        totalCount={incidents.length}
-        onToggleExpand={toggleExpand}
-        onInputChange={handleInputChange}
-        onSubmit={handleReportSubmit}
-        onCancel={() => setIsReporting(false)}
-        onStartReporting={() => setIsReporting(true)}
-      />
-    </div>
+    <ThemeProvider>
+      <div className="dashboard">
+        <Sidebar 
+          filter={filter}
+          sortOrder={sortOrder}
+          onFilterChange={setFilter}
+          onSortChange={setSortOrder}
+        />
+        
+        <MainContent
+          incidents={sortedIncidents}
+          expandedIncident={expandedIncident}
+          isReporting={isReporting}
+          newIncident={newIncident}
+          filteredCount={filteredIncidents.length}
+          totalCount={incidents.length}
+          onToggleExpand={toggleExpand}
+          onInputChange={handleInputChange}
+          onSubmit={handleReportSubmit}
+          onCancel={() => setIsReporting(false)}
+          onStartReporting={() => setIsReporting(true)}
+        />
+      </div>
+    </ThemeProvider>
   );
 };
 

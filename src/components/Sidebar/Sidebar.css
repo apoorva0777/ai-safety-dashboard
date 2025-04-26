@@ -1,17 +1,19 @@
-/* src/components/Sidebar/Sidebar.css */
 .sidebar {
   width: 300px;
-  background-color: var(--white);
+  background-color: var(--sidebar-bg);
   box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  border-right: 1px solid var(--gray-light);
+  border-right: 1px solid var(--border-color);
 }
 
 .sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 1.5rem;
 }
 
@@ -28,6 +30,10 @@
   .sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .sidebar-header {
+    flex-wrap: wrap;
   }
 }

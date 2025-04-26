@@ -1,6 +1,6 @@
-// src/components/Sidebar/Sidebar.tsx
 import React from 'react';
 import IncidentFilters from '../IncidentFilters/IncidentFilters';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Sidebar.css';
 
 interface SidebarProps {
@@ -14,12 +14,13 @@ const Sidebar: React.FC<SidebarProps> = ({
   filter, 
   sortOrder, 
   onFilterChange, 
-  onSortChange
+  onSortChange 
 }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-header">
         <h2>AI Safety Dashboard</h2>
+        <ThemeToggle />
       </div>
       
       <div className="sidebar-content">

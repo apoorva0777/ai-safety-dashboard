@@ -1,4 +1,3 @@
-/* src/components/IncidentList/IncidentList.css */
 .incidents-list {
     display: flex;
     flex-direction: column;
@@ -9,7 +8,7 @@
     text-align: center;
     padding: 2rem;
     color: var(--gray);
-    background-color: var(--white);
+    background-color: var(--card-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
   }

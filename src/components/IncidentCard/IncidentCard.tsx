@@ -1,4 +1,3 @@
-// src/components/IncidentCard/IncidentCard.tsx
 import React from 'react';
 import { Incident } from '../../types/incident';
 import './IncidentCard.css';

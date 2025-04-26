@@ -1,4 +1,3 @@
-// src/components/MainContent/MainContent.tsx
 import React from 'react';
 import { Incident } from '../../types/incident';
 import IncidentList from '../IncidentList/IncidentList';

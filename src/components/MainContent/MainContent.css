@@ -1,8 +1,7 @@
-/* src/components/MainContent/MainContent.css */
 .main-content {
     flex: 1;
     padding: 2rem;
-    background-color: #f5f7fa;
+    background-color: var(--bg-color);
   }
   
   .main-header {
@@ -47,7 +46,7 @@
   }
   
   .form-container {
-    background-color: var(--white);
+    background-color: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);

@@ -1,4 +1,3 @@
-// src/components/IncidentFilters/IncidentFilters.tsx
 import React from 'react';
 import { Severity, SortOrder } from '../../types/incident';
 import './IncidentFilters.css';

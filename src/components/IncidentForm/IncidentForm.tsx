@@ -1,4 +1,3 @@
-// src/components/IncidentForm/IncidentForm.tsx
 import React from 'react';
 import { Incident } from '../../types/incident';
 import './IncidentForm.css';

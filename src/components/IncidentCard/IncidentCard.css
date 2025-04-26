@@ -1,15 +1,15 @@
-/* src/components/IncidentCard/IncidentCard.css */
 .incident-card {
-  background-color: var(--white);
+  background-color: var(--card-bg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: 1.25rem;
   transition: var(--transition);
+  border-left: 4px solid transparent;
 }
 
 .incident-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .incident-header {
@@ -27,7 +27,7 @@
 
 .incident-title h3 {
   font-size: 1.1rem;
-  color: var(--dark);
+  color: var(--text-color);
 }
 
 .severity-badge {
@@ -39,17 +39,17 @@
 }
 
 .severity-badge.low {
-  background-color: rgba(40, 167, 69, 0.1);
+  background-color: rgba(0, 200, 83, 0.1);
   color: var(--success);
 }
 
 .severity-badge.medium {
-  background-color: rgba(255, 193, 7, 0.1);
-  color: #d39e00;
+  background-color: rgba(255, 171, 0, 0.1);
+  color: var(--warning);
 }
 
 .severity-badge.high {
-  background-color: rgba(220, 53, 69, 0.1);
+  background-color: rgba(255, 61, 0, 0.1);
   color: var(--danger);
 }
 
@@ -82,21 +82,21 @@
 .incident-description {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--gray-light);
-  color: var(--secondary);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
 /* Severity border indicators */
 .incident-card.severity-low {
-  border-left: 4px solid var(--success);
+  border-left-color: var(--success);
 }
 
 .incident-card.severity-medium {
-  border-left: 4px solid var(--warning);
+  border-left-color: var(--warning);
 }
 
 .incident-card.severity-high {
-  border-left: 4px solid var(--danger);
+  border-left-color: var(--danger);
 }
 
 @media (max-width: 768px) {

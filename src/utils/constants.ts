@@ -1,4 +1,3 @@
-// src/utils/constants.ts
 import { Incident } from '../types/incident';
 
 export const initialIncidents: Incident[] = [

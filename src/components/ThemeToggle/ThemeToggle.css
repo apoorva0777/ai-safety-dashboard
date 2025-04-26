@@ -1,0 +1,30 @@
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    margin-left: auto;
+  }
+  
+  .theme-icon {
+    font-size: 1.2rem;
+  }
+  
+  .theme-text {
+    font-size: 0.9rem;
+  }
+  
+  .theme-toggle:hover {
+    background-color: var(--gray-light);
+  }
+  
+  @media (max-width: 768px) {
+    .theme-toggle {
+      margin-left: 0;
+    }
+  }

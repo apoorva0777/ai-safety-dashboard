@@ -25,21 +25,21 @@ A modern dashboard for tracking and reporting AI safety incidents with toggleabl
 - **Build Tool**: Create React App (Vite recommended for new projects)
 - **Testing**: (Optional - Jest/React Testing Library)
 
-## Installation
+# Installation
 
-### Prerequisites
+## Prerequisites
 
 - Node.js (v16 or higher recommended)
 - npm (v8 or higher) or yarn
 
-### Setup
+## Setup
 
-# Clone repository
-git clone https://github.com/your-username/ai-safety-dashboard.git
-cd ai-safety-dashboard
+## Clone repository
+-git clone https://github.com/your-username/ai-safety-dashboard.git
+-cd ai-safety-dashboard
 
-# Install dependencies
+## Install dependencies
 npm install
 
-# Run development server
+## Run development server
 npm start

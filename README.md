@@ -35,8 +35,10 @@ A modern dashboard for tracking and reporting AI safety incidents with toggleabl
 ## Setup
 
 ## Clone repository
--git clone https://github.com/your-username/ai-safety-dashboard.git
--cd ai-safety-dashboard
+
+git clone https://github.com/your-username/ai-safety-dashboard.git
+
+cd ai-safety-dashboard
 
 ## Install dependencies
 npm install
